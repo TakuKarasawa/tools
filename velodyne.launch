@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- start cloud nodelet -->
+    <include file="$(find velodyne_pointcloud)/launch/32e_points.launch" />
+
+</launch>

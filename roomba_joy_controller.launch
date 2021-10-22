@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="roomba_teleop_meiji" name="electric_joystick_drive" type="electric_joystick_drive"/>
+    <node pkg="joy" name="joy_node" type="joy_node"/>
+</launch>
