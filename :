@@ -1,7 +1,0 @@
-#!/bin/bash
-
-rosrun tf2_tools view_frames.py
-# echo "Start foreground sleep"
-# sleep 7
-# echo "End foreground sleep"
-evince frames.pdf

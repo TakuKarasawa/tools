@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="is_theta_s" default="true" />
+    <arg name="is_depth" default="true" />
+    <arg name="is_color" default="true" />
+    <arg name="is_depth_pc" default="true" />
+
+    <!-- manager -->
+    <arg name="manager_name" default="nodelet_magager" />
+    <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen" />
+
+    <!-- theta_s -->
+    <group if="$(arg is_theta_s)">
+        <node pkg="image_transport" type="republish" name="theta_s_republish" args="compressed raw" >
+            <remap from="in" to="theta_s/image_raw" />
+            <remap from="out" to="theta_s/image_raw" />
+        </node>
+
+        <!-- <arg name="image_raw_topic" default="theta_s/image_raw" /> -->
+        <!-- <node pkg="theta_s_ros" type="image_converter" name="converter"> -->
+        <!--     <remap from="/camera/image_raw" to="$(arg image_raw_topic)" /> -->
+        <!--     <remap from="/equirectangular/image_raw" to="equirectangular/image_raw" /> -->
+        <!-- </node> -->
+
+        <arg name="image_raw_topic" default="theta_s/image_raw" />
+        <node pkg="equirectangular_convertor" type="equirectangular_convertor_node" name="equirectangular_convertor_node" >
+            <param name="dual_topic_name" value="$(arg image_raw_topic)" />
+            <param name="equi_topic_name" value="equirectangular/image_raw" />
+            <param name="is_visualize" value="false" />
+            <param name="mode" value="0" />
+        </node>
+    </group>
+
+    <!-- depth -->
+    <group if="$(arg is_depth)">
+        <node pkg="image_transport" type="republish" name="depth_republish" args="compressed raw" >
+            <remap from="in" to="camera/aligned_depth_to_color/image_raw" />
+            <remap from="out" to="camera/aligned_depth_to_color/image_raw" />
+        </node>
+    </group>
+
+    <!-- color -->
+    <group if="$(arg is_color)">
+        <node pkg="image_transport" type="republish" name="color_republish" args="compressed raw" >
+            <remap from="in" to="camera/color/image_rect_color" />
+            <remap from="out" to="camera/color/image_rect_color" />
+        </node>
+    </group>
+
+    <!-- depth point cloud -->
+    <group if="$(arg is_depth_pc)">
+        <node pkg="nodelet" type="nodelet" name="point_cloud_xyzrgb" args="load depth_image_proc/point_cloud_xyzrgb $(arg manager_name)">
+            <remap from="rgb/camera_info" to="camera/color/camera_info" />
+            <remap from="rgb/image_rect_color" to="camera/color/image_rect_color" />
+            <remap from="depth_registered/image_rect" to="camera/aligned_depth_to_color/image_raw" />
+            <remap from="depth_registered/points" to="camera/depth_registered/points" />
+        </node>
+    </group>
+
+</launch>
