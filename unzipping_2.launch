@@ -5,6 +5,10 @@
     <arg name="is_color" default="true" />
     <arg name="is_depth_pc" default="true" />
 
+    <!-- theta_s parameters -->
+    <arg name="theta_s_mode" default="0" />
+    <arg name="is_theta_s_visualize" default="false" />
+
     <!-- manager -->
     <arg name="manager_name" default="nodelet_magager" />
     <node pkg="nodelet" type="nodelet" name="$(arg manager_name)" args="manager" output="screen" />
@@ -16,18 +20,12 @@
             <remap from="out" to="theta_s/image_raw" />
         </node>
 
-        <!-- <arg name="image_raw_topic" default="theta_s/image_raw" /> -->
-        <!-- <node pkg="theta_s_ros" type="image_converter" name="converter"> -->
-        <!--     <remap from="/camera/image_raw" to="$(arg image_raw_topic)" /> -->
-        <!--     <remap from="/equirectangular/image_raw" to="equirectangular/image_raw" /> -->
-        <!-- </node> -->
-
         <arg name="image_raw_topic" default="theta_s/image_raw" />
         <node pkg="equirectangular_convertor" type="equirectangular_convertor_node" name="equirectangular_convertor_node" >
             <param name="dual_topic_name" value="$(arg image_raw_topic)" />
             <param name="equi_topic_name" value="equirectangular/image_raw" />
-            <param name="is_visualize" value="false" />
-            <param name="mode" value="0" />
+            <param name="is_visualize" value="$(arg is_theta_s_visualize)" />
+            <param name="mode" value="$(arg theta_s_mode)" />
         </node>
     </group>
 
