@@ -1,9 +1,13 @@
 <?xml version="1.0"?>
 <launch>
+    <!-- switch -->
     <arg name="is_theta_s" default="true" />
     <arg name="is_depth" default="true" />
     <arg name="is_color" default="true" />
     <arg name="is_depth_pc" default="true" />
+
+    <!-- roomba -->
+    <arg name="roomba" default="" />
 
     <!-- theta_s parameters -->
     <arg name="theta_s_mode" default="0" />
