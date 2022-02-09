@@ -20,14 +20,14 @@
     <!-- theta_s -->
     <group if="$(arg is_theta_s)">
         <node pkg="image_transport" type="republish" name="theta_s_republish" args="compressed raw" >
-            <remap from="in" to="theta_s/image_raw" />
-            <remap from="out" to="theta_s/image_raw" />
+            <remap from="in" to="$(arg roomba)/theta_s/image_raw" />
+            <remap from="out" to="$(arg roomba)/theta_s/image_raw" />
         </node>
 
         <arg name="image_raw_topic" default="theta_s/image_raw" />
         <node pkg="equirectangular_convertor" type="equirectangular_convertor_node" name="equirectangular_convertor_node" >
-            <param name="dual_topic_name" value="$(arg image_raw_topic)" />
-            <param name="equi_topic_name" value="equirectangular/image_raw" />
+            <param name="dual_topic_name" value="$(arg roomba)/$(arg image_raw_topic)" />
+            <param name="equi_topic_name" value="$(arg roomba)/equirectangular/image_raw" />
             <param name="is_visualize" value="$(arg is_theta_s_visualize)" />
             <param name="mode" value="$(arg theta_s_mode)" />
         </node>
