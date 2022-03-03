@@ -1,0 +1,12 @@
+digraph G {
+"roomba2/base_link" -> "roomba2/laser"[label=" Broadcaster: /play_1646283798219672427\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"roomba2/odom" -> "roomba2/base_link"[label=" Broadcaster: /play_1646283798219672427\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 1645699418.944\nOldest transform: 1645699414.044\n"];
+"roomba2/base_link" -> "roomba2/theta_s"[label=" Broadcaster: /play_1646283798219672427\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"roomba2/dynamixel" -> "roomba2/camera_link"[label=" Broadcaster: /play_1646283798219672427\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"roomba2/base_link" -> "roomba2/dynamixel"[label=" Broadcaster: /play_1646283798219672427\nAverage rate: 62.505\nBuffer length: 4.992\nMost recent transform: 1645699419.03\nOldest transform: 1645699414.038\n"];
+"map" -> "roomba2/odom"[label=" Broadcaster: /play_1646283798219672427\nAverage rate: 40.029\nBuffer length: 4.996\nMost recent transform: 1645699419.14\nOldest transform: 1645699414.143\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1646283916.4716828"[ shape=plaintext ] ;
+}->"map";
+}
