@@ -59,4 +59,12 @@
         </node>
     </group>
 
+    <!-- rviz -->
+    <arg name="is_rviz" default="false" />
+    <arg name="rviz_path" default="$(env HOME)/tools/config/rviz/roomba/" />
+    <group if="$(arg is_rviz)" >
+        <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_path)/$(arg roomba).rviz" />
+    </group>
+
+
 </launch>
