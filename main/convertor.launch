@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="roomba" default="roomba1" />
+
+    <!-- rosbag -->
+    <node pkg="rosbag" type="record" name="rosbag_record" args="record -o /home/amsl/$(arg roomba).bag /$(arg roomba)/camera/aligned_depth_to_color/image_raw/compressed /$(arg roomba)/camera/color/camera_info /$(arg roomba)/camera/color/image_rect_color/compressed /$(arg roomba)/theta_s/image_raw/compressed /$(arg roomba)/roomba/odometry /$(arg roomba)/scan /$(arg roomba)/amcl_pose /$(arg roomba)/bounding_boxes /$(arg roomba)/detected_image/compressed /$(arg roomba)/object_positions /$(arg roomba)/object_color_positions /tf /tf_static" />
+
+</launch>

@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-    <!-- file path -->
-    <arg name="rviz_path" default="$(env HOME)/tools/config/rviz" />
-
-    <!-- rviz -->
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(arg rviz_path)/depth.rviz"/>
-
-</launch>

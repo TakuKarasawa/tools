@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
-<launch>  
-    <arg name="is_bag" default="true" />
-    <arg name="is_theta_s" default="true" />
-    <arg name="is_depth" default="true" />
-    <arg name="is_color" default="true" />
+<launch>
+    <arg name="is_bag"      default="true" />
+    <arg name="is_theta_s"  default="true" />
+    <arg name="is_depth"    default="true" />
+    <arg name="is_color"    default="true" />
     <arg name="is_depth_pc" default="true" />
 
     <!-- roomba number -->
@@ -22,11 +22,11 @@
 
                 <!-- If the above parameters aren't unique, choose the first match: -->
                 <param name="index" value="0"/>
-                
+
                 <!-- Image size and type -->
                 <param name="width" value="1280"/>
                 <param name="height" value="720"/>
-                
+
                 <!-- choose whichever uncompressed format the camera supports: -->
                 <param name="video_mode" value="mjpeg"/> <!-- or yuyv/nv12/mjpeg -->
                 <param name="frame_rate" value="14"/>
@@ -55,7 +55,7 @@
         </group>
 
         <!-- depth -->
-        <group if="$(arg is_depth)">   
+        <group if="$(arg is_depth)">
             <node name="depth_republish" pkg="image_transport" type="republish" args="compressed raw">
                 <remap from="in" to="camera/aligned_depth_to_color/image_raw" />
                 <remap from="out" to="camera/aligned_depth_to_color/image_raw" />

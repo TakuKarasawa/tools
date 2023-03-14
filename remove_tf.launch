@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+    <!-- file path -->
+    <arg name="dir_path" default="$(env HOME)/bagfiles" />
+    <!-- <arg name="dir_path" default="$(env HOME)/bagfiles/multi_robot/six_roomba_20210513/replace_ns_bagfiles/" /> -->
+
+    <!-- roomba -->
+    <arg name="roomba" default="roomba1" />
+
+    <!-- rosbag -->
+    <node pkg="rosbag" type="filter" name="filter" args="$(arg dir_path)/$(arg roomba).bag $(arg dir_path)/$(arg roomba)_without_tf.bag "'$(arg roomba) in topic'"" />
+
+
+</launch>

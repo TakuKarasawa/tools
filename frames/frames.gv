@@ -1,14 +1,8 @@
 digraph G {
-"roomba1/camera_link" -> "roomba1/camera_depth_frame"[label=" Broadcaster: /play_1654071072024692601\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"roomba1/camera_depth_frame" -> "roomba1/camera_depth_optical_frame"[label=" Broadcaster: /play_1654071072024692601\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"roomba1/camera_link" -> "roomba1/camera_color_frame"[label=" Broadcaster: /play_1654071072024692601\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"roomba1/camera_aligned_depth_to_color_frame" -> "roomba1/camera_color_optical_frame"[label=" Broadcaster: /play_1654071072024692601\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"roomba1/camera_link" -> "roomba1/camera_aligned_depth_to_color_frame"[label=" Broadcaster: /play_1654071072024692601\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
-"roomba1/base_link" -> "roomba1/dynamixel"[label=" Broadcaster: /play_1654071072024692601\nAverage rate: 62.703\nBuffer length: 4.992\nMost recent transform: 1645699456.748\nOldest transform: 1645699451.756\n"];
-"roomba1/odom" -> "roomba1/base_link"[label=" Broadcaster: /play_1654071072024692601\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 1645699456.657\nOldest transform: 1645699451.757\n"];
-"map" -> "roomba1/odom"[label=" Broadcaster: /play_1654071072024692601\nAverage rate: 40.156\nBuffer length: 4.981\nMost recent transform: 1645699456.841\nOldest transform: 1645699451.861\n"];
+"roomba1/odom" -> "roomba1/base_link"[label=" Broadcaster: /roomba1_tf_broadcaster\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 1645699299.857\nOldest transform: 1645699294.957\n"];
+"map" -> "roomba1/odom"[label=" Broadcaster: /mcl_node\nAverage rate: 4.035\nBuffer length: 4.708\nMost recent transform: 1645699299.492\nOldest transform: 1645699294.783\n"];
 edge [style=invis];
  subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
-"Recorded at time: 1654071241.5099797"[ shape=plaintext ] ;
+"Recorded at time: 1669421083.2637956"[ shape=plaintext ] ;
 }->"map";
 }
